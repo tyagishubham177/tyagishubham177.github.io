@@ -1,12 +1,13 @@
 # Shubham Tyagi — product portfolio
 
-A responsive portfolio based on the selected warm, human visual direction. Content is a first public draft grounded in Shubham's July 2026 résumé, career reflection, and public GitHub projects. Case-study figures and internal artifacts are intentionally omitted pending review.
+A multi-page portfolio in the selected warm, human direction C. Every page is pre-rendered as a complete HTML document; links navigate between documents, not through an SPA router. React hydrates optional interactions. A lazy-loaded Three.js sculpture responds to native scroll on the home page, with motion-off and reduced-motion fallbacks.
 
 ## Run locally
 
 ```powershell
 npm ci --cache .npm-cache
 npm run build
+npm test
 npm run preview -- --host 127.0.0.1 --port 4173
 ```
 
@@ -22,4 +23,10 @@ The GitHub Pages workflow uploads `dist/client` on pushes to `main`. The publish
 
 ## Content updates
 
-Edit `src/App.jsx` for text and links, `src/styles.css` for layout and colors, and `public/assets/` for the three generated editorial images. The architectural thumbnails are illustrations, not photographs of the work. The site deliberately omits an unapproved résumé download and unverified outcome metrics.
+Edit `src/case-studies.js` for the three detailed product cases and `src/CasePage.jsx` for the reader layout. Edit `src/App.jsx` for Home, Work, About and Build Lab. `src/ScrollStory.jsx` controls the scroll sculpture. Styling lives in `src/styles.css`, `src/case-pages.css` and `src/scroll-story.css`.
+
+Routes: `/`, `/work/`, `/work/hospital-digitalisation/`, `/work/vascular-access/`, `/work/diabetes-companion/`, `/about/`, `/build-lab/`. Build metadata lives in `src/entry-server.jsx`; `scripts/prerender.mjs` emits document files, a sitemap and a static 404.
+
+Cases use the private PML_Project pack: Hospital v0.2 and Vascular/Diabetes v0.1. Public content is anonymised and separates recollection, source-supported contribution and retrospective reconstruction. Original documents, clinical records and unverified achieved outcomes must not be added to the public repository. See `CONTENT_EVIDENCE.md`. Architectural thumbnails and the 3D sculpture are conceptual illustrations, not delivered-product screenshots.
+
+To review: open Work, read each case, refresh its direct URL, then scroll the home page's “A way of working” section and try “Turn motion off”. Check the narrow-screen menu and tables on your phone.

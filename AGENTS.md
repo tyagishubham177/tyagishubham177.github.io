@@ -1,5 +1,12 @@
 # Prototype Instructions
 
+## Portfolio owner decisions — 2 October 2026
+
+- Build a genuine multi-page portfolio, not a single-page site or client-side router masquerading as subpages. Every public route needs its own pre-rendered HTML, unique metadata, real links and direct-refresh support on GitHub Pages.
+- Keep selected direction C: warm white, tomato accent, editorial serif and human illustration. Add real Three.js scroll-driven motion without scroll hijacking, with reduced-motion and WebGL fallbacks.
+- Product case content comes from PML_Project. Hospital v0.2 supersedes v0.1. Preserve source status/ownership boundaries; do not publish raw source packets, clinical/customer identifiers or unsupported outcomes.
+- Native Three.js geometry is explicitly requested for the animated sculpture. It is conceptual product storytelling, not a depiction of shipped product UI.
+
 Run the local server yourself and open the preview in the browser available to this environment. Do not give the user server-start instructions when you can run it.
 
 Before making substantial visual changes, use the Product Design plugin's `get-context` skill when the visual source is unclear or no longer matches the current goal. When the user gives durable prototype-specific design feedback, preferences, or decisions, record them in `AGENTS.md`.

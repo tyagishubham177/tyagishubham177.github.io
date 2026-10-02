@@ -8,8 +8,9 @@ export default {
     }
 
     const indexUrl = new URL(request.url);
-    indexUrl.pathname = "/index.html";
+    indexUrl.pathname = "/404.html";
     indexUrl.search = "";
-    return env.ASSETS.fetch(new Request(indexUrl, request));
+    const missing = await env.ASSETS.fetch(new Request(indexUrl, request));
+    return new Response(missing.body, { status: 404, headers: missing.headers });
   },
 };
