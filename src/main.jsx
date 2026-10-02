@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
-import { App } from "./App.jsx";
 import "./styles.css";
+import { App } from "./App.jsx";
 
 document.documentElement.dataset.js = "true";
 document.documentElement.dataset.motionState = "off";
