@@ -58,3 +58,10 @@ test('sculptural layouts preserve static content, navigation and conceptual labe
  }
  assert.ok(home.includes('Conceptual study'));
 });
+test('sculptural composition overrides the baseline hero in the built stylesheet',async()=>{
+ const html=await readFile(fileFor('/'),'utf8');
+ const asset=html.match(/href="(\/assets\/[^" ]+\.css)"/)[1];
+ const css=await readFile(new URL(`../dist/client${asset}`,import.meta.url),'utf8');
+ const baseline=css.indexOf('.hero{');const sculpture=css.indexOf('.sculptural-hero{');
+ assert.ok(baseline>=0&&sculpture>baseline,'load baseline CSS before component compositions');
+});

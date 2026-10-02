@@ -15,6 +15,8 @@ Local result: passed. This owner-requested visual iteration supersedes the old t
 
 Live deployment is checked after publication; earlier deployment notes below refer to prior iterations.
 
+Live follow-up: the first publication passed CI and rendered the new hero/case covers. A CSS import-order check exposed baseline hero rules loading after composition rules; the base import was moved ahead of App and a built-stylesheet regression test added. Desktop headline scale was adjusted for the wider sculpture column. Subsequent local checks preserve desktop/mobile fit and global motion behavior.
+
 ## Multi-page and 3D update — 2026-10-02
 
 Local result: passed. The initial single-page verification below is historical and superseded where this update changes navigation.
