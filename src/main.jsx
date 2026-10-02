@@ -4,6 +4,7 @@ import { App } from "./App.jsx";
 import "./styles.css";
 
 document.documentElement.dataset.js = "true";
+document.documentElement.dataset.motionState = "off";
 const root = document.getElementById("root");
 const path = root.dataset.path || `${location.pathname.replace(/\/(?:index\.html)?$/, "")}/`;
 const app = <React.StrictMode><App path={path}/></React.StrictMode>;

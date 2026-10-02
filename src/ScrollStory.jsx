@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import './scroll-story.css';
+import { useSculptureMotion } from './ProductSculpture.jsx';
 
 const stages = [
   ['Understand the workflow', 'Start with the people, the context, and the friction. Find the problem worth solving before choosing a solution.'],
@@ -15,20 +16,11 @@ export function ScrollStory() {
   const hostRef = useRef(null);
   const id = useId();
   // Start static on the server and during hydration; never flash unwanted motion.
-  const [reducedMotion, setReducedMotion] = useState(true);
-  const [motionEnabled, setMotionEnabled] = useState(true);
+  const {reducedMotion,enabled:motionEnabled,toggle} = useSculptureMotion();
   const [rendererUnavailable, setRendererUnavailable] = useState(false);
   const [rendererState, setRendererState] = useState('fallback');
   const [fallbackReason, setFallbackReason] = useState('Static illustration. All three ideas are below.');
   const animate = motionEnabled && !reducedMotion && !rendererUnavailable;
-
-  useEffect(() => {
-    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const update = () => setReducedMotion(query.matches);
-    update();
-    query.addEventListener('change', update);
-    return () => query.removeEventListener('change', update);
-  }, []);
 
   useEffect(() => {
     const host = hostRef.current;
@@ -225,10 +217,10 @@ export function ScrollStory() {
         </div>
         <div className="scroll-story__control">
           <button type="button" aria-pressed={animate} disabled={reducedMotion || rendererUnavailable}
-            aria-describedby={`${id}-motion`} onClick={() => setMotionEnabled((enabled) => !enabled)}>
+            aria-describedby={`${id}-motion`} onClick={toggle}>
             {animate ? 'Turn motion off' : 'Turn motion on'}
           </button>
-          <p id={`${id}-motion`}>{reducedMotion ? 'Your reduced-motion preference is respected.' : 'Motion is optional. Scroll at your own pace.'}</p>
+          <p id={`${id}-motion`}>{reducedMotion ? 'Your reduced-motion preference is respected.' : 'Shared across all scenes. Scroll at your own pace.'}</p>
         </div>
       </header>
       <div className="scroll-story__track" ref={trackRef}>
