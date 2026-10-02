@@ -45,4 +45,14 @@ No actionable P0/P1/P2 findings in the final matched desktop comparison. Changes
 - [x] Mobile layout and primary navigation tested.
 - [x] Production build passed.
 - [x] Public claims checked for evidence boundaries.
-- [ ] Verify final GitHub Pages deployment and live asset loading.
+- [x] Verify final GitHub Pages deployment and live asset loading.
+
+## Deployment verification — 2026-10-02
+
+- Live URL: https://tyagishubham177.github.io/.
+- Published application commit: `d3449cfe8830bf6545cacb120b53494e9b5ce407`.
+- GitHub Actions run `37018419487`: completed successfully.
+- Public page renders the portfolio; all three images loaded with natural dimensions. Work navigation resolves, no horizontal overflow, and browser warning/error log is empty.
+- Live screenshot: `../outputs/research-2026-09-21/live-portfolio.jpg`.
+- Both Build Lab destinations were confirmed as existing public GitHub repositories. No message/email sent and no confidential source document published.
+
