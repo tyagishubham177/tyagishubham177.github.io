@@ -1,6 +1,6 @@
 # Shubham Tyagi — product portfolio
 
-A multi-page portfolio in the selected warm, human direction C. Every page is pre-rendered as a complete HTML document; links navigate between documents, not through an SPA router. React hydrates optional interactions. A lazy-loaded Three.js sculpture responds to native scroll on the home page, with motion-off and reduced-motion fallbacks.
+A multi-page portfolio in the selected warm, human direction C. Every page is pre-rendered as a complete HTML document; links navigate between documents, not through an SPA router. React hydrates optional interactions. Lazy-loaded Three.js scenes respond to native scroll and gentle pointer movement in the homepage hero, featured work, Work index and case covers. One shared motion switch controls all scenes; reduced-motion and static visual fallbacks keep the stories accessible.
 
 ## Run locally
 
@@ -23,7 +23,7 @@ The GitHub Pages workflow uploads `dist/client` on pushes to `main`. The publish
 
 ## Content updates
 
-Edit `src/case-studies.js` for the three detailed product cases and `src/CasePage.jsx` for the reader layout. Edit `src/App.jsx` for Home, Work, About and Build Lab. `src/ScrollStory.jsx` controls the scroll sculpture. Styling lives in `src/styles.css`, `src/case-pages.css` and `src/scroll-story.css`.
+Edit `src/case-studies.js` for the three detailed product cases and `src/CasePage.jsx` for the reader layout. Edit `src/App.jsx` for Home, Work, About and Build Lab. `src/ProductSculpture.jsx` contains the four visual variants and shared motion preference; `src/ScrollStory.jsx` controls the three-pose scroll story. Styling lives in `src/styles.css`, `src/case-pages.css`, `src/sculptural-layouts.css`, `src/product-sculpture.css` and `src/scroll-story.css`.
 
 Routes: `/`, `/work/`, `/work/hospital-digitalisation/`, `/work/vascular-access/`, `/work/diabetes-companion/`, `/about/`, `/build-lab/`. Build metadata lives in `src/entry-server.jsx`; `scripts/prerender.mjs` emits document files, a sitemap and a static 404.
 

@@ -45,3 +45,16 @@ test('source content does not resurrect retired claims or PM job titles',()=>{
  const content=JSON.stringify(studies);assert.ok(!content.includes('increased retention by'));assert.ok(!content.includes('statistically significant'));
  assert.ok(studies[0].sections.find(s=>s.id==='decisions').note.includes('removed'));
 });
+test('sculptural layouts preserve static content, navigation and conceptual labels',async()=>{
+ const home=await readFile(fileFor('/'),'utf8');
+ for(const variant of ['hero','hospital','platform','engagement'])assert.ok(home.includes(`data-variant="${variant}"`));
+ for(const study of studies){
+  assert.ok(home.includes(`href="${pathForStudy(study)}"`));
+  const html=await readFile(fileFor(pathForStudy(study)),'utf8');
+  assert.ok(html.includes('Conceptual illustration'));
+  assert.ok(html.includes('not a delivered interface'));
+  assert.ok(html.includes('class="case-cover"'));
+  assert.ok(html.includes('Reduced motion preference active'));
+ }
+ assert.ok(home.includes('Conceptual study'));
+});

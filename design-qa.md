@@ -1,5 +1,20 @@
 # Portfolio design QA
 
+## Sculptural work layouts — 2026-10-02
+
+Local result: passed. This owner-requested visual iteration supersedes the old thumbnail/card layout, without changing the case-study source copy.
+
+- Homepage now has an edge-to-edge sculptural hero, three open alternating project spreads, and a separate Build Lab strip. Work repeats the project compositions. Individual cases have distinct illustrated covers and a visual next-case link.
+- Four actual Three.js variants: orbital hero, medication-workflow stepping planes, shared-platform core/satellites and engagement loop. Warm materials and the tomato sphere extend direction C. Static CSS illustrations carry the same idea before rendering or when motion is off. All are explicitly conceptual, not evidence of delivered interfaces.
+- Final build and all ten tests passed. Every document route, static paragraph, table cell, case link, metadata and 404 remains validated. Source data was not edited.
+- Internal-browser checks at 1365 × 900 and 390 × 844 found no horizontal overflow. Work deep-link refresh keeps its title/path and intended heading size. Case chapter links, next-case links and mobile covers work; all three variants rendered WebGL.
+- Global off removed every canvas, exposed all fallbacks, disabled smooth anchor scrolling and hid the animated reading-progress bar. Off persisted when navigating from hospital to vascular; re-enabling rendered the scene. ScrollStory shares the switch. Browser warning/error log empty in tested navigation.
+- Scenes lazy-initialize near the viewport and release offscreen contexts. Agent syntax/SSR and mocked lifecycle/storage checks passed; these are not a device/GPU benchmark. Actual OS preference change, forced GPU/context loss and pointer movement were not browser-automated.
+- Evidence in `../outputs/sculptural-layouts-qa/`: `homepage-desktop.jpg`, `featured-desktop.jpg`, `platform-mobile.jpg`, `diabetes-mobile.jpg`. Captures use explicit viewport-sized clips. New visual composition is an intentional response to the owner's feedback, not a fidelity claim against the original flat mock.
+- Independent integration review found motion-scope wording and Work-heading selector issues. Motion-off was extended beyond canvases and ScrollStory now explains its shared scope; the new Work selector was browser-verified.
+
+Live deployment is checked after publication; earlier deployment notes below refer to prior iterations.
+
 ## Multi-page and 3D update — 2026-10-02
 
 Local result: passed. The initial single-page verification below is historical and superseded where this update changes navigation.

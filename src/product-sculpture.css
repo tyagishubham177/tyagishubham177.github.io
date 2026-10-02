@@ -1,0 +1,55 @@
+.product-sculpture {
+  position: relative;
+  width: 100%;
+  min-height: 240px;
+  aspect-ratio: 1.2;
+  overflow: hidden;
+  isolation: isolate;
+  pointer-events: auto;
+}
+.product-sculpture__canvas,
+.product-sculpture__fallback { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.product-sculpture__canvas { display: block; visibility: hidden; }
+.product-sculpture[data-renderer="webgl"] > .product-sculpture__canvas { visibility: visible; }
+.product-sculpture[data-renderer="webgl"] > .product-sculpture__fallback { visibility: hidden; }
+.product-sculpture__fallback { color: #302e29; }
+.product-sculpture__fallback > span { position: absolute; box-sizing: border-box; }
+.product-sculpture__plane {
+  width: 40%; height: 24%; left: 30%; top: 44%;
+  border: 1.5px solid currentColor;
+  background: #ece0c9;
+  transform: rotate(-18deg) skew(24deg, 8deg);
+  box-shadow: 3px 5px 0 #c8b99e, 4px 6px 0 #302e29;
+}
+.product-sculpture__plane--1 { width: 25%; height: 20%; left: 23%; top: 27%; transform: rotate(16deg) skew(-18deg); }
+.product-sculpture__plane--2,
+.product-sculpture__plane--3,
+.product-sculpture__plane--4 { display: none; }
+.product-sculpture__orbit { width: 70%; height: 45%; left: 15%; top: 27%; border: 2px solid currentColor; border-radius: 50%; transform: rotate(-32deg); }
+.product-sculpture__orbit--two { width: 50%; height: 64%; left: 25%; top: 18%; transform: rotate(28deg); }
+.product-sculpture__ball { width: 12%; aspect-ratio: 1; border-radius: 50%; background: #c94031; border: 1px solid #a73623; left: 71%; top: 27%; box-shadow: inset -5px -5px 0 rgb(123 46 25 / 12%); }
+.product-sculpture[data-variant="hero"] .product-sculpture__ball { width: 14%; }
+.product-sculpture[data-variant="hospital"] .product-sculpture__orbit { display: none; }
+.product-sculpture[data-variant="hospital"] .product-sculpture__plane { display: block; width: 23%; height: 16%; transform: skew(0deg, -20deg); }
+.product-sculpture[data-variant="hospital"] .product-sculpture__plane--0 { left: 9%; top: 62%; }
+.product-sculpture[data-variant="hospital"] .product-sculpture__plane--1 { left: 29%; top: 49%; }
+.product-sculpture[data-variant="hospital"] .product-sculpture__plane--2 { left: 49%; top: 36%; }
+.product-sculpture[data-variant="hospital"] .product-sculpture__plane--3 { left: 69%; top: 23%; }
+.product-sculpture[data-variant="hospital"] .product-sculpture__plane--4 { display: none; }
+.product-sculpture[data-variant="hospital"] .product-sculpture__ball { left: 75%; top: 15%; }
+.product-sculpture[data-variant="platform"] .product-sculpture__orbit { display: none; }
+.product-sculpture[data-variant="platform"] .product-sculpture__plane--0 { left: 29%; top: 40%; width: 42%; height: 28%; }
+.product-sculpture[data-variant="platform"] .product-sculpture__plane--1 { left: 10%; top: 23%; width: 21%; height: 15%; }
+.product-sculpture[data-variant="platform"] .product-sculpture__plane--2 { display: block; left: 73%; top: 34%; width: 18%; height: 15%; }
+.product-sculpture[data-variant="platform"] .product-sculpture__plane--3 { display: block; left: 49%; top: 76%; width: 20%; height: 13%; }
+.product-sculpture[data-variant="platform"] .product-sculpture__plane--4 { display: block; left: 35%; top: 67%; width: 32%; height: 10%; background: repeating-linear-gradient(90deg, #ece0c9 0 16%, #302e29 16% 18%); transform: skewY(-10deg); box-shadow: none; }
+.product-sculpture[data-variant="platform"] .product-sculpture__ball { left: 46%; top: 33%; }
+.product-sculpture[data-variant="engagement"] .product-sculpture__orbit--one { height: 40%; top: 35%; transform: rotate(-12deg); border-width: 3px; }
+.product-sculpture[data-variant="engagement"] .product-sculpture__orbit--two,
+.product-sculpture[data-variant="engagement"] .product-sculpture__plane--1 { display: none; }
+.product-sculpture[data-variant="engagement"] .product-sculpture__plane--0 { width: 29%; height: 14%; top: 48%; left: 28%; }
+.product-sculpture[data-variant="engagement"] .product-sculpture__ball { left: 75%; top: 43%; }
+@media (prefers-reduced-motion: reduce) {
+  .product-sculpture > .product-sculpture__canvas { visibility: hidden; }
+  .product-sculpture > .product-sculpture__fallback { visibility: visible; }
+}
