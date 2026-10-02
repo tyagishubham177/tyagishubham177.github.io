@@ -1,5 +1,22 @@
 # Portfolio design QA
 
+## Multi-page and 3D update — 2026-10-02
+
+Local result: passed. The initial single-page verification below is historical and superseded where this update changes navigation.
+
+- Seven real document routes plus a static 404 are pre-rendered. All case paragraphs and table cells are present in generated HTML before JavaScript. Nine automated tests pass; CI now runs these after the build.
+- Hospital, vascular and diabetes case links were opened in the internal browser and refreshed at their direct URLs. Page titles and document paths remain correct. Work has its own index and the mobile menu closes after document navigation.
+- Hospital chapter navigation updates the active chapter and reading progress. Desktop has a sticky contents rail. At 390 × 844, pages have no horizontal overflow; 570px tables scroll within their 335px containers. Vascular and diabetes direct pages were also checked at that mobile width.
+- Actual WebGL canvas confirmed. Native scroll moved sculpture progress from 0.000 to 0.997 and stage 1 to 3; images show scattered findings becoming a coherent stack. Motion-off removes the canvas and keeps text. Re-enabling recreates the renderer. Mobile WebGL view fits without page overflow. Warning/error log empty in the tested preview.
+- Source direction C retains serif/sans hierarchy, white canvas, dark ink, tomato accent and warm illustrations. The user-requested sculpture adds geometry in the same palette; case readers remain restrained.
+- Independent source-text review passed against Hospital v0.2 and selected vascular/diabetes sources. This checks consistency, not independent proof of delivery or impact. No raw customer or patient documents were copied into the public tree.
+- Evidence: `../outputs/multipage-qa/hospital-desktop.jpg`, `vascular-mobile.jpg`, `scroll-discovery.jpg`, `scroll-alignment.jpg`. Screenshots use the actual browser viewport; no claim of a new matched-size reference comparison.
+- Limits: generated static content was tested, not a browser session with JavaScript disabled. Motion-off was exercised; actual OS reduced-motion preference and forced WebGL context-loss were not emulated. GPU/device compatibility beyond this browser remains unverified. Three.js is a separate lazy chunk (about 192KB gzip); Vite's large-chunk advisory is expected, not a failed build.
+
+Publication is verified separately after the deployment workflow completes.
+
+## Original direction C implementation
+
 final result: passed
 
 ## Evidence
