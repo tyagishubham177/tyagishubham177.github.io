@@ -21,6 +21,14 @@ npm run build
 
 The GitHub Pages workflow uploads `dist/client` on pushes to `main`. The published URL is `https://tyagishubham177.github.io/`.
 
+## Page identity and orientation
+
+Work uses a warm editorial collection layout; Build Lab is a dark code studio; cases have individually tinted covers with the project name as their primary heading. A sticky breadcrumb bar distinguishes document navigation from case chapter links, with Work active on every case and a native “Switch case” disclosure. About has a blush profile cover. The homepage retains its existing sculptural introduction.
+
+`src/PageOrientation.jsx` and `src/page-identities.css` own these treatments. Native [cross-document view transitions](https://developer.chrome.com/docs/web-platform/view-transitions/cross-document) provide a short progressive-enhancement fade in supported browsers. All navigation remains ordinary anchors and complete HTML documents. Reduced motion and the stored global motion-off choice suppress the transition; unsupported browsers simply navigate normally.
+
+Verification: Home → Work → a case → Switch case → Work breadcrumb → Build Lab. Each destination should show a new cover and an unambiguous current location. Refresh case URLs directly, use browser Back, and check chapter anchors clear the sticky header. `tests/page-identities.test.mjs` checks the pre-rendered identity, breadcrumbs, parent navigation and native case switcher.
+
 ## Content updates
 
 Edit `src/case-studies.js` for the three detailed product cases and `src/CasePage.jsx` for the reader layout. Edit `src/App.jsx` for Home, Work, About and Build Lab. `src/ProductSculpture.jsx` contains the four visual variants and shared motion preference; `src/ScrollStory.jsx` controls the three-pose scroll story. Styling lives in `src/styles.css`, `src/case-pages.css`, `src/sculptural-layouts.css`, `src/product-sculpture.css` and `src/scroll-story.css`.

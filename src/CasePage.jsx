@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "@phosphor-icons/react";
+import { ArrowRight, ArrowUpRight } from "@phosphor-icons/react";
 import { studies, pathForStudy } from "./case-studies.js";
 import "./case-pages.css";
 import { ProductSculpture } from "./ProductSculpture.jsx";
@@ -14,20 +14,30 @@ export function CasePage({ study }) {
     const update = () => {
       const height = document.documentElement.scrollHeight - innerHeight;
       setProgress(height > 0 ? Math.min(100, Math.max(0, scrollY / height * 100)) : 0);
-      const current = study.sections.filter(section => document.getElementById(section.id)?.getBoundingClientRect().top < innerHeight * .4).at(-1);
+      const firstChapter = document.getElementById(study.sections[0].id);
+      const stickyOffset = firstChapter ? parseFloat(getComputedStyle(firstChapter).scrollMarginTop) : 0;
+      const threshold = Math.max(innerHeight * .4, stickyOffset + 2);
+      const current = study.sections.filter(section => document.getElementById(section.id)?.getBoundingClientRect().top < threshold).at(-1);
       setActive(current?.id || study.sections[0].id);
     };
     update();
     window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
+    window.addEventListener("resize", update);
+    const observer = window.ResizeObserver ? new ResizeObserver(update) : null;
+    for (const element of document.querySelectorAll('.site-header, .page-orientation, .case-page')) observer?.observe(element);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+      observer?.disconnect();
+    };
   }, [study]);
   const next = studies[(studies.indexOf(study) + 1) % studies.length];
-  return <main id="main" className="case-page">
+  return <main id="main" className="case-page" data-case={sculptureFor(study)}>
     <div className="reading-progress" aria-hidden="true" style={{ transform: `scaleX(${progress / 100})` }} />
     <header className="case-hero page-shell" id="top">
-      <a className="back-link" href="/work/"><ArrowLeft size={18} aria-hidden="true" /> All product work</a>
-      <div className="case-cover"><div className="case-cover__copy"><p className="section-label">{study.number} / {study.category}</p>
-      <h1>{study.title}</h1><p className="case-deck">{study.description}</p></div><figure className={`case-cover__visual case-cover__visual--${sculptureFor(study)}`}><ProductSculpture variant={sculptureFor(study)}/><figcaption>{motifFor(study)}<span>Conceptual illustration · not a delivered interface</span></figcaption></figure></div>
+      <p className="case-arrival">Case study {study.number} / 03 <span>{study.category}</span></p>
+      <div className="case-cover"><div className="case-cover__copy"><p className="section-label">Product story / {study.number}</p>
+      <h1>{study.shortTitle}</h1><p className="case-subtitle">{study.title}</p><p className="case-deck">{study.description}</p></div><figure className={`case-cover__visual case-cover__visual--${sculptureFor(study)}`}><ProductSculpture variant={sculptureFor(study)}/><figcaption>{motifFor(study)}<span>Conceptual illustration · not a delivered interface</span></figcaption></figure></div>
       <dl className="case-meta"><div><dt>My role</dt><dd>{study.role}</dd></div><div><dt>Contribution</dt><dd>{study.focus}</dd></div><div><dt>Delivery stage</dt><dd>{study.stage}</dd></div></dl>
     </header>
     <div className="case-intro page-shell"><p className="case-intro__insight">{study.summary}</p><div><span className="evidence-label">Account & evidence</span><p>{study.boundary}</p></div></div>

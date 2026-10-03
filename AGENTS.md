@@ -7,6 +7,7 @@
 - Product case content comes from PML_Project. Hospital v0.2 supersedes v0.1. Preserve source status/ownership boundaries; do not publish raw source packets, clinical/customer identifiers or unsupported outcomes.
 - Native Three.js geometry is explicitly requested for the animated sculpture. It is conceptual product storytelling, not a depiction of shipped product UI.
 - Extend the red-sphere and cream-plane sculptural language into the homepage hero, full-width featured-project compositions, Work index and individual case covers. User prefers more layouts like the existing ball scene. Keep real multi-page navigation and readable case content; one global motion switch should control every scene.
+- 3 October: Work, Build Lab and project clicks must feel like new pages, not jumps to another scroll position. Use distinct destination covers and compositions, strong active parent navigation, persistent breadcrumbs, and a native case switcher. Keep chapter fragments visibly separate from document navigation. Preserve browser Back behavior; never intercept real links to simulate an SPA.
 
 Run the local server yourself and open the preview in the browser available to this environment. Do not give the user server-start instructions when you can run it.
 
