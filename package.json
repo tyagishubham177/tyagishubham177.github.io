@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --configLoader native",
     "build": "vite build --configLoader native && vite build --configLoader native --ssr src/entry-server.jsx && node scripts/prerender.mjs && node scripts/prepare-sites-build.mjs",
-    "test": "node --test tests/multipage.test.mjs tests/sites-worker.test.mjs",
+    "test": "node --test tests/multipage.test.mjs tests/sites-worker.test.mjs tests/page-identities.test.mjs",
     "preview": "vite preview --configLoader native",
     "test:sites": "node --test tests/sites-worker.test.mjs"
   },
